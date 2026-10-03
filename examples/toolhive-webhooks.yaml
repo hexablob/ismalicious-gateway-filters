@@ -1,0 +1,10 @@
+validating:
+  - name: ismalicious-fetch-preflight
+    url: https://filters.example.org/toolhive
+    timeout: 20s
+    failure_policy: fail
+    # ToolHive reads this file; protect and mount it from a secret store.
+    hmac_secret_ref: /etc/toolhive/ismalicious-webhook-secret
+    # For a private CA, uncomment and supply the mounted CA bundle.
+    # tls_config:
+    #   ca_bundle_path: /etc/toolhive/pki/filter-ca.crt

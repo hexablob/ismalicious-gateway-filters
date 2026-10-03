@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ismalicious-gateway-filters"
+version = "0.1.0"
+description = "Scoped Obot MCP filter and ToolHive preflight webhook for IsMalicious Gate"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+ismalicious-gateway-filter = "gateway_filters:main"
+
+[tool.setuptools]
+py-modules = ["gateway_filters"]

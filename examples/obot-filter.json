@@ -1,0 +1,55 @@
+{
+  "name": "IsMalicious selected fetch filter",
+  "toolName": "ismalicious_filter",
+  "allowedToMutate": false,
+  "selectors": [
+    {
+      "method": "tools/call",
+      "identifiers": [
+        "fetch"
+      ]
+    }
+  ],
+  "mcpServerManifest": {
+    "name": "IsMalicious Gate Filter",
+    "shortDescription": "Selected MCP fetch request and text result validation",
+    "description": "Explicitly configured gateway filter; unknown link reputation is not a benignness proof.",
+    "runtime": "uvx",
+    "uvxConfig": {
+      "package": "git+https://github.com/hexablob/ismalicious-gateway-filters@v0.1.0",
+      "command": "ismalicious-gateway-filter",
+      "args": [
+        "--stdio"
+      ],
+      "egressDomains": [
+        "api.ismalicious.com"
+      ]
+    },
+    "config": [
+      {
+        "key": "ISMALICIOUS_API_KEY",
+        "name": "API key",
+        "description": "IsMalicious API key",
+        "required": true,
+        "sensitive": true,
+        "usage": "env"
+      },
+      {
+        "key": "ISMALICIOUS_API_SECRET",
+        "name": "API secret",
+        "description": "IsMalicious API secret",
+        "required": true,
+        "sensitive": true,
+        "usage": "env"
+      },
+      {
+        "key": "ISMALICIOUS_FETCH_TOOLS",
+        "name": "Selected fetch tools",
+        "description": "JSON map from fetch tool name to its URL argument",
+        "required": true,
+        "sensitive": false,
+        "usage": "env"
+      }
+    ]
+  }
+}
